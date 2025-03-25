@@ -1,3 +1,80 @@
-#heading {
-    color: red;
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.313);
+}
+
+.logo {
+    width: 130px;
+    padding-left: 40px;
+}
+
+.nav-items > ul {
+    display: flex;
+    list-style-type: none;
+    padding-right: 40px;
+}
+
+.nav-items > ul > li {
+    padding: 10px;
+    margin: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: cursive;
+}
+
+.res-card {
+    width: 250px;
+    /* height: 300px; */
+    border: 1px solid rgba(128, 128, 128, 0.313);
+    padding: 5px;
+    background-color: aliceblue;
+    border-radius: 8px;
+    margin: 10px;
+    margin-bottom: 20px;
+
+}
+
+.res-card:hover {
+    box-shadow: 0px 0px 10px gray;
+    cursor: pointer;
+}
+
+.search {
+    padding: 10px;
+}
+
+.res-img {
+    width: 100%;
+    border-radius: 8px;
+    height: 200px;
+}
+
+.res-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.res-card h3,.res-card h4 {
+    /* padding: 0; */
+    padding-bottom: 5px;
+    margin: 0;
+}
+
+.res-title {
+    padding-top: 10px;
+    font-weight: 800;
+}
+
+.res-info {
+    padding-bottom: 5px;
+    font-weight: 700;
+    display: flex;
+    gap: 5px;
+}
+
+.res-cuisines {
+    font-weight: 200;
 }
