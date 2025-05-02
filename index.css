@@ -233,11 +233,13 @@
     color: rgba(0, 0, 0, 0.884);
     font-weight: 800;
 }
+
 .item h4 {
     margin: 0;
     color: rgba(0, 0, 0, 0.884);
     font-weight: 800;
 }
+
 .left {
     width: 70%;
     word-wrap: break-word;
@@ -245,4 +247,10 @@
 
 .left p {
     opacity: 0.8;
+}
+
+.user-card {
+    border: 1px solid black;
+    padding: 10px;
+    background-color: rgba(216, 191, 216, 0.568);
 }
