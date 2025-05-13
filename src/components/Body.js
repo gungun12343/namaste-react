@@ -25,29 +25,33 @@ const Body = () => {
 
     return listOfRestaurants.length === 0 ? ( <Shimmer /> ) : (
         <div className="body">
-            <div className="filter">
+
+            <div className="filter flex items-center">
                 
-                <div className="search">
-                    <input className="search-box" type="text" placeholder="Search Restaurants" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
-                    <button className="search-btn" onClick={() => {
-                        const data = listOfRestaurants.filter((res) => res.info.name.toLowerCase().includes(searchText.toLowerCase()));
-                        setSearchItems(data);
-                    }}>Search</button>
+                <div className="search m-4 p-4">
+                    <input className="search-box border-2 border-solid border-black px-2 py-2 rounded-md text-lg w-72" type="text" placeholder="Search Restaurants" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
+                    <button className="search-btn bg-blue-200 px-4 py-2 text-lg rounded-md ml-3" 
+                        onClick={() => {
+                            const data = listOfRestaurants.filter((res) => res.info.name.toLowerCase().includes(searchText.toLowerCase()));
+                            setSearchItems(data);
+                        }}>Search</button>
                 </div>
 
+                <button className="filter-btn text-blue-400 border-2 border-solid border-blue-200 font-semibold hover:text-white hover:bg-blue-200 px-4 py-2 text-lg rounded-md ml-3" 
+                    onClick={() => {
+                        const filteredList = listOfRestaurants.filter((res) => res.info.avgRating > 4.2)
+                        setSearchItems(filteredList);
+                    }}>Top Rated Restaurants</button>
+
                 {searchItems.length !== 0 ?
-                <button className="back_btn" onClick={() => {
+                <button className="back_btn ml-6 bg-red-600 px-4 py-2 text-lg rounded-md" onClick={() => {
                     setSearchItems([]);
                     setSearchText("");
                 }}>Go back</button> : ""}
 
-                <button className="filter-btn" onClick={() => {
-                    const filteredList = listOfRestaurants.filter((res) => res.info.avgRating > 4.2)
-                    setSearchItems(filteredList);
-                }}>Top Rated Restaurants</button>
             </div>
 
-            <div className="res-container">
+            <div className="res-container flex flex-wrap justify-center">
                 {searchItems.length === 0 ? 
                     listOfRestaurants.map((restaurant) => <Link style={{ textDecoration: 'none' }} key={restaurant.info.id} to={"/restaurants/"+restaurant.info.id}><RestaurantCard resInfo={restaurant} /></Link>) : 
                     searchItems.map((res) => <Link style={{ textDecoration: 'none' }} key={res.info.id} to={"/restaurants/"+res.info.id}><RestaurantCard resInfo={res} /></Link>)

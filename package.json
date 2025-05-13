@@ -15,8 +15,11 @@
   "author": "Gungun Koshta",
   "license": "ISC",
   "devDependencies": {
+    "autoprefixer": "^10.4.21",
     "parcel": "^2.13.3",
-    "process": "^0.11.10"
+    "postcss": "^8.5.3",
+    "process": "^0.11.10",
+    "tailwindcss": "^3.3.2"
   },
   "dependencies": {
     "react": "^19.0.0",
