@@ -7,6 +7,7 @@ import  About from "./components/About";
 import { Contact } from "./components/Contact";
 import { Error } from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
+
 // import Grocery from "./components/Grocery";
 
 // Chunking
@@ -19,7 +20,7 @@ const Grocery = lazy(() => import("./components/Grocery"))
 
 const AppLayout = () => {
     return (
-        <div className="app">
+        <div className="app w-full">
             <Header />
             <Outlet />
         </div>

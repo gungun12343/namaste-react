@@ -24,13 +24,13 @@ const Body = () => {
     }
 
     return listOfRestaurants.length === 0 ? ( <Shimmer /> ) : (
-        <div className="body">
+        <div className="body mt-12">
 
-            <div className="filter flex items-center">
+            <div className="filter mb-2 ml-4 flex gap-4 md:items-center md:flex-row flex-col items-start">
                 
-                <div className="search m-4 p-4">
-                    <input className="search-box border-2 border-solid border-black px-2 py-2 rounded-md text-lg w-72" type="text" placeholder="Search Restaurants" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
-                    <button className="search-btn bg-blue-200 px-4 py-2 text-lg rounded-md ml-3" 
+                <div className="search">
+                    <input className="search-box border-2 border-solid border-black px-2 py-2 rounded-md text-lg w-72 ml-3" type="text" placeholder="Search Restaurants" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
+                    <button className="search-btn bg-blue-200 px-4 py-2 text-lg rounded-md ml-3 mt-2" 
                         onClick={() => {
                             const data = listOfRestaurants.filter((res) => res.info.name.toLowerCase().includes(searchText.toLowerCase()));
                             setSearchItems(data);
@@ -44,7 +44,7 @@ const Body = () => {
                     }}>Top Rated Restaurants</button>
 
                 {searchItems.length !== 0 ?
-                <button className="back_btn ml-6 bg-red-600 px-4 py-2 text-lg rounded-md" onClick={() => {
+                <button className="back_btn ml-3 mb-5 md:mb-0 bg-red-600 px-4 py-2 text-lg rounded-md" onClick={() => {
                     setSearchItems([]);
                     setSearchText("");
                 }}>Go back</button> : ""}
