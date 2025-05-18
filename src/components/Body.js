@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, {withVegLabel} from "./RestaurantCard";
 import { useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -12,10 +12,14 @@ const Body = () => {
 
     const listOfRestaurants = useRestaurantList();
 
+    const VegRestaurantCard = withVegLabel(RestaurantCard);
+
     //Conditional rendering
     // if(listOfRestaurants.length === 0) {
     //     return <Shimmer />
     // }
+
+    //console.log("body",listOfRestaurants);
 
     const onlineStatus = useOnlineStatus();
 
@@ -53,7 +57,12 @@ const Body = () => {
 
             <div className="res-container flex flex-wrap justify-center">
                 {searchItems.length === 0 ? 
-                    listOfRestaurants.map((restaurant) => <Link style={{ textDecoration: 'none' }} key={restaurant.info.id} to={"/restaurants/"+restaurant.info.id}><RestaurantCard resInfo={restaurant} /></Link>) : 
+                    listOfRestaurants.map((restaurant) => 
+                    <Link style={{ textDecoration: 'none' }} key={restaurant.info.id} to={"/restaurants/"+restaurant.info.id}>
+                        {'veg' in restaurant.info ? <VegRestaurantCard resInfo={restaurant} /> : <RestaurantCard resInfo={restaurant} />}
+                        {/* <RestaurantCard resInfo={restaurant} /> */}
+                    </Link>) 
+                    : 
                     searchItems.map((res) => <Link style={{ textDecoration: 'none' }} key={res.info.id} to={"/restaurants/"+res.info.id}><RestaurantCard resInfo={res} /></Link>)
                 }
             </div>

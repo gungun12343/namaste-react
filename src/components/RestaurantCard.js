@@ -1,9 +1,7 @@
 import { CDN_URL } from "../utils/constants";
 
 const RestaurantCard = ({resInfo}) => {
-    //const {image, name, avgRating, deliveryTime, costForTwo, cuisines} = resInfo.info;
     const {name, costForTwo, avgRating, cuisines, cloudinaryImageId, sla} = resInfo.info;
-    // const deliveryTime = sla.deliveryTime;
 
     return (
         <div className="res-card w-[300px] p-3 m-3 bg-blue-100 rounded-lg hover:shadow-2xl hover:bg-blue-200">
@@ -17,6 +15,17 @@ const RestaurantCard = ({resInfo}) => {
             <h4 className="res-cuisines">{cuisines.join(", ")}</h4>
         </div>
     )
+}
+
+export const withVegLabel = (RestaurantCard) => {
+    return (props) => {
+        return (
+            <div className="relative">
+                <label className="absolute bg-green-700 text-white px-5 py-1 rounded-md left-1 font-semibold">Veg</label>
+                <RestaurantCard {...props} />
+            </div>
+        )
+    }
 }
 
 export default RestaurantCard;
