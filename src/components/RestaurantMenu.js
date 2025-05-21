@@ -3,10 +3,13 @@ import { CDN_URL } from "../utils/constants";
 import { useParams } from "react-router";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import { RestaurantCategory } from "./RestaurantCategory";
+import { useState } from "react";
 
 const RestaurantMenu = () => {
     const {resId} = useParams();
     const resInfo = useRestaurantMenu(resId);
+
+    const [showIndex, setShowIndex] = useState(null);
 
     if (resInfo === null) return <Shimmer />;
 
@@ -18,8 +21,6 @@ const RestaurantMenu = () => {
         (c) => 
         c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
-
-    console.log(categories);
 
     return (
         <div className="resmenu flex justify-center items-center flex-col">
@@ -34,24 +35,14 @@ const RestaurantMenu = () => {
                 <h3>{sla.slaString}</h3>
             </div>
 
-            {/* <h2 className="font-bold mt-10 text-xl" >Recommended({itemCards.length})</h2>
-
-            <div className="menu md:w-2/4 mt-5">
-                {itemCards.map((res) => (
-                    <div className="item py-5 pl-5 items-center border-b border-solid border-gray-300 mb-5 flex" key={res.card.info.id} >
-                        <div className="left w-3/4">
-                            <h3 className="font-bold text-lg" >{res.card.info.name}</h3>
-                            <h4 className="font-semibold pb-2" >{res.card.info.defaultPrice/100 || res.card.info.price/100} Rs.</h4>
-                            <p className="text-gray-800" >{res.card.info.description}</p>
-                        </div>
-                        <div className="right w-2/5">
-                            <img className="item-img w-[200px] h-[200px] rounded-lg" src={CDN_URL+res.card.info.imageId} />
-                        </div>
-                    </div>
-                ))}
-            </div> */}
-
-            {categories.map((category) => <RestaurantCategory data={category.card?.card} />)}
+            {categories.map((category, index) => (
+                <RestaurantCategory 
+                    data={category.card?.card} 
+                    showItems={index == showIndex ? true : false} 
+                    index={index}
+                    setShowIndex={setShowIndex}
+                />
+            ))}
         </div>
     )
 }

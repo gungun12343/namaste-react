@@ -1,9 +1,10 @@
 import RestaurantCard, {withVegLabel} from "./RestaurantCard";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useRestaurantList from "../utils/useRestaurantList";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
     //state variable
@@ -22,6 +23,8 @@ const Body = () => {
     //console.log("body",listOfRestaurants);
 
     const onlineStatus = useOnlineStatus();
+
+    const { loggedInUser ,setUserName} = useContext(UserContext);
 
     if(onlineStatus === false) {
         return <h1>Looks like you are offline!! Please check your internet connection</h1>
@@ -53,6 +56,14 @@ const Body = () => {
                     setSearchText("");
                 }}>Go back</button> : ""}
 
+                <div>
+                    <input 
+                        className="search-box border-2 border-solid border-black px-2 py-2 rounded-md text-lg w-72 ml-3" 
+                        onChange={(e) => setUserName(e.target.value)}
+                        value={loggedInUser}
+                        placeholder="Username"
+                    />
+                </div>
             </div>
 
             <div className="res-container flex flex-wrap justify-center">
