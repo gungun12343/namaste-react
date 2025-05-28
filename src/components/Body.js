@@ -77,6 +77,8 @@ const Body = () => {
                     searchItems.map((res) => <Link style={{ textDecoration: 'none' }} key={res.info.id} to={"/restaurants/"+res.info.id}><RestaurantCard resInfo={res} /></Link>)
                 }
             </div>
+
+            <h1 className="text-center font-bold text-2xl my-5">Copyright @{loggedInUser}</h1>
         </div>
     )
 }

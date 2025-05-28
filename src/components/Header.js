@@ -3,9 +3,10 @@ import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux"
 
 export const Header = () => {
     const [btnNameReact, setBtnNameReact] = useState("Login");
@@ -13,7 +14,8 @@ export const Header = () => {
 
     const onlineStatus = useOnlineStatus();
 
-    const {loggedInUser} = useContext(UserContext);
+    // subscribing to the store using selector
+    const cartItems = useSelector((store) => store.cart.items);
 
     return (
         <div className="header w-full h-32 flex items-center justify-between bg-blue-200 shadow-lg">
@@ -43,7 +45,9 @@ export const Header = () => {
                     <button className="login_btn md:pr-5 py-2" onClick={() => {
                         btnNameReact === "Login" ? setBtnNameReact("Logout"): setBtnNameReact("Login");
                     }} >{btnNameReact}</button>
-                    <li className="md:pr-5 py-2 font-extrabold">{loggedInUser}</li>
+                    <li className="md:pr-5 py-2 cursor-pointer">
+                        <Link style={{textDecoration: "none", color:"black"}} to="/cart" ><FontAwesomeIcon icon={faCartShopping} />({cartItems.length}items)</Link>
+                    </li>
                 </ul>
             </div>
 

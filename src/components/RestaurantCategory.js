@@ -20,7 +20,7 @@ export const RestaurantCategory = ({data, showItems, index, setShowIndex}) => {
                     <span>{showItems ? <FontAwesomeIcon icon={faCaretUp}/> : <FontAwesomeIcon icon={faCaretDown} />}</span>
                 </div>
                 
-                {showItems ? <ItemList items={data.itemCards} /> : ""}
+                {showItems ? <ItemList items={data.itemCards} label="ADD" /> : ""}
             </div>
         </div>
     )

@@ -23,10 +23,10 @@ class About extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>ABOUT</h1>
-                <h2>This is Namaste React web series</h2>
-                <UserClass name="Surbhi Jyoti" location="Mumbai" />
+            <div className="text-center">
+                <h1 className="text-lg my-4 font-bold">ABOUT US!</h1>
+                {/* <h2>This is Namaste React web series</h2> */}
+                <UserClass name="Gungun Koshta" location="Jabalpur" />
             </div>
         )
     }
