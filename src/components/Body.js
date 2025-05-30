@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import useRestaurantList from "../utils/useRestaurantList";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 const Body = () => {
     //state variable
@@ -54,7 +56,7 @@ const Body = () => {
                 <button className="back_btn ml-3 mb-5 md:mb-0 bg-red-600 px-4 py-2 text-lg rounded-md" onClick={() => {
                     setSearchItems([]);
                     setSearchText("");
-                }}>Go back</button> : ""}
+                }}><FontAwesomeIcon icon={faArrowLeft} /></button> : ""}
 
                 <div>
                     <input 
